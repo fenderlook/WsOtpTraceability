@@ -5,7 +5,7 @@
  */
 package co.com.claro.otpTraceability.util;
 
-import co.com.claro.otpTraceability.entity.HistoryNotes;
+import co.com.claro.otpTraceability.entity.TraceabilityOtp;
 
 /**
  *
@@ -13,26 +13,41 @@ import co.com.claro.otpTraceability.entity.HistoryNotes;
  */
 public class Validaciones {
 
-    public HistoryNotes validarNulos(HistoryNotes request, HistoryNotes objetoActualizar) {
+    public TraceabilityOtp validarNulos(TraceabilityOtp request, TraceabilityOtp objetoActualizar) {
 
-        if (campoLleno(request.getIdNotes() + "")) {
-            objetoActualizar.setIdNotes(request.getIdNotes());
+        if (campoLleno(request.getIdTraza() + "")) {
+            objetoActualizar.setIdTraza(request.getIdTraza());
         }
-        if (campoLleno(request.getIdCase())) {
-            objetoActualizar.setIdCase(request.getIdCase());
+        if (campoLleno(request.getDocumentTraza())) {
+            objetoActualizar.setDocumentTraza(request.getDocumentTraza());
         }
-        if (campoLleno(request.getNotes())) {
-            objetoActualizar.setNotes(request.getNotes());
+        if (campoLleno(request.getMinTraza())) {
+            objetoActualizar.setMinTraza(request.getMinTraza());
         }
-        if (campoLleno(request.getUserCreate())) {
+        if (campoLleno(request.getCvcTraza())) {
+            objetoActualizar.setCvcTraza(request.getCvcTraza());
+        }
+        if (campoLleno(request.getDescriptionTraza() + "")) {
+            objetoActualizar.setDescriptionTraza(request.getDescriptionTraza());
+        }
+        if (campoLleno(request.getFlowTraza() + "")) {
+            objetoActualizar.setFlowTraza(request.getFlowTraza());
+        }
+        if (campoLleno(request.getApplicationTraza() + "")) {
+            objetoActualizar.setApplicationTraza(request.getApplicationTraza());
+        }
+        if (campoLleno(request.getDataTraza() + "")) {
+            objetoActualizar.setDataTraza(request.getDataTraza());
+        }
+        if (campoLleno(request.getValueTraza() + "")) {
+            objetoActualizar.setValueTraza(request.getValueTraza());
+        }
+        if (campoLleno(request.getUserCreate() + "")) {
             objetoActualizar.setUserCreate(request.getUserCreate());
         }
-        if (campoLleno(request.getDateCreate() + "")) {
+        if (campoLleno(request.getDateCreate()+ "")) {
             objetoActualizar.setDateCreate(request.getDateCreate());
         }
-        if (campoLleno(request.getIdState() + "")) {
-            objetoActualizar.setIdState(request.getIdState());
-        }        
 
         return objetoActualizar;
     }

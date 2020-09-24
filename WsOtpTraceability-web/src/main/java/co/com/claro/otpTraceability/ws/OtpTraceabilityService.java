@@ -5,8 +5,8 @@
  */
 package co.com.claro.otpTraceability.ws;
 
-import co.com.claro.otpTraceability.Facade.HistoryNotesFacade;
-import co.com.claro.otpTraceability.entity.HistoryNotes;
+import co.com.claro.otpTraceability.Facade.TraceabilityOtpFacade;
+import co.com.claro.otpTraceability.entity.TraceabilityOtp;
 import co.com.claro.otpTraceability.entity.responseActualizar;
 import co.com.claro.otpTraceability.util.Validaciones;
 import javax.ws.rs.Consumes;
@@ -20,7 +20,7 @@ import javax.ws.rs.POST;
 
 /**
  *
- * @author omarMad
+ * @author vargasCarr
  */
 @Path("OtpTraceability")
 @Stateless
@@ -31,30 +31,29 @@ public class OtpTraceabilityService {
     }
     
     @EJB
-    private HistoryNotesFacade pqrFacade;
+    private TraceabilityOtpFacade pqrFacade;
     
     @POST
     @Consumes("application/json")
     @Produces("application/json")
     @Path("create")
-    public responseActualizar create(HistoryNotes request) {
+    public responseActualizar create(TraceabilityOtp request) {
         responseActualizar response = new responseActualizar();
         try {
             Validaciones val = new Validaciones();
             request.setDateCreate(new Date());
-            request.setIdState(1);
-            if (val.campoLleno(request.getIdCase()) && val.campoLleno(request.getNotes()) && val.campoLleno(request.getUserCreate())) {
-                request.setIdNotes((pqrFacade.findAll().size() + 1));
+            if (val.campoLleno(request.getDocumentTraza()) && val.campoLleno(request.getMinTraza()) && val.campoLleno(request.getCvcTraza()) && val.campoLleno(request.getUserCreate())) {
+                request.setIdTraza((pqrFacade.findAll().size() + 1));
                 pqrFacade.create(request);
                 response.isValid = true;
                 response.description = "Transaction Complete";
             } else {
                 response.isValid = false;
-                response.description = "Debe ir el ID del caso, la nota y usuario de creación.";
+                response.description = "Debe ir el número de documento, min, código CVC y usuario de creación.";
             }
         } catch (Exception e) {
             response.isValid = false;
-            response.description = "Falla del servicio de actualizacion de notas. Descripción: " + e.getMessage();
+            response.description = "Falla del servicio de registro de trazabilidad. Descripción: " + e.getMessage();
         }
         return response;
     }
