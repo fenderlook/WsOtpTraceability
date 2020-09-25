@@ -13,11 +13,13 @@ import co.com.claro.otpTraceability.entity.TraceabilityOtp;
  */
 public class Validaciones {
 
-    public TraceabilityOtp validarNulos(TraceabilityOtp request, TraceabilityOtp objetoActualizar) {
+    public TraceabilityOtp validarNulos(TraceabilityOtp request) {
 
-        if (campoLleno(request.getIdTraza() + "")) {
-            objetoActualizar.setIdTraza(request.getIdTraza());
-        }
+        TraceabilityOtp objetoActualizar = new TraceabilityOtp();
+
+//        if (campoLleno(request.getIdTraza() + "")) {
+//            objetoActualizar.setIdTraza(request.getIdTraza());
+//        }
         if (campoLleno(request.getDocumentTraza())) {
             objetoActualizar.setDocumentTraza(request.getDocumentTraza());
         }
@@ -45,9 +47,9 @@ public class Validaciones {
         if (campoLleno(request.getUserCreate() + "")) {
             objetoActualizar.setUserCreate(request.getUserCreate());
         }
-        if (campoLleno(request.getDateCreate()+ "")) {
-            objetoActualizar.setDateCreate(request.getDateCreate());
-        }
+//        if (campoLleno(request.getDateCreate() + "")) {
+//            objetoActualizar.setDateCreate(request.getDateCreate());
+//        }
 
         return objetoActualizar;
     }

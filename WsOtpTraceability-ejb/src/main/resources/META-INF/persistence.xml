@@ -4,7 +4,7 @@
     <jta-data-source>jdbc/OtpTraceability</jta-data-source>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
-    <class>co.com.claro.otpTraceability.entity.HistoryNotes</class>
+    <class>co.com.claro.otpTraceability.entity.TraceabilityOtp</class>
     <properties>
       <property name="eclipselink.cache.shared.default" value="false"/>
     </properties>

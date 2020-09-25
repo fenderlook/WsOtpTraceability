@@ -26,13 +26,13 @@ import javax.ws.rs.POST;
 @Stateless
 @TransactionManagement
 public class OtpTraceabilityService {
-    
+
     public OtpTraceabilityService() {
     }
-    
+
     @EJB
     private TraceabilityOtpFacade pqrFacade;
-    
+
     @POST
     @Consumes("application/json")
     @Produces("application/json")
@@ -41,9 +41,10 @@ public class OtpTraceabilityService {
         responseActualizar response = new responseActualizar();
         try {
             Validaciones val = new Validaciones();
+            request = val.validarNulos(request);
             request.setDateCreate(new Date());
             if (val.campoLleno(request.getDocumentTraza()) && val.campoLleno(request.getMinTraza()) && val.campoLleno(request.getCvcTraza()) && val.campoLleno(request.getUserCreate())) {
-                request.setIdTraza((pqrFacade.findAll().size() + 1));
+                request.setIdTraza(pqrFacade.findAll().size() + 1);
                 pqrFacade.create(request);
                 response.isValid = true;
                 response.description = "Transaction Complete";

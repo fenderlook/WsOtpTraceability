@@ -47,7 +47,7 @@ public class TraceabilityOtp implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_TRAZA")
-    private Long idTraza;
+    private Integer idTraza;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -92,24 +92,11 @@ public class TraceabilityOtp implements Serializable {
     public TraceabilityOtp() {
     }
 
-    public TraceabilityOtp(Long idTraza) {
-        this.idTraza = idTraza;
-    }
-
-    public TraceabilityOtp(Long idTraza, String documentTraza, String minTraza, String cvcTraza, String userCreate, Date dateCreate) {
-        this.idTraza = idTraza;
-        this.documentTraza = documentTraza;
-        this.minTraza = minTraza;
-        this.cvcTraza = cvcTraza;
-        this.userCreate = userCreate;
-        this.dateCreate = dateCreate;
-    }
-
-    public Long getIdTraza() {
+    public Integer getIdTraza() {
         return idTraza;
     }
 
-    public void setIdTraza(Long idTraza) {
+    public void setIdTraza(Integer idTraza) {
         this.idTraza = idTraza;
     }
 
@@ -191,31 +178,6 @@ public class TraceabilityOtp implements Serializable {
 
     public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idTraza != null ? idTraza.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraceabilityOtp)) {
-            return false;
-        }
-        TraceabilityOtp other = (TraceabilityOtp) object;
-        if ((this.idTraza == null && other.idTraza != null) || (this.idTraza != null && !this.idTraza.equals(other.idTraza))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "co.com.claro.otpTraceability.entity.TraceabilityOtp[ idTraza=" + idTraza + " ]";
     }
     
 }
